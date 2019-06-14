@@ -14,7 +14,12 @@ function Accessories(props) {
       <ul>
         {accessories &&
           accessories.map(accessory => (
-            <li key={accessory.id}>{accessory.name}</li>
+            <li key={accessory.id}>
+              {accessory.name}
+              {accessory.__typename === "Light" && (
+                <span>Brightness: {accessory.brightnessLevel}</span>
+              )}
+            </li>
           ))}
       </ul>
     </div>
