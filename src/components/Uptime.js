@@ -11,7 +11,7 @@ function Uptime(props) {
         <span> An error occurred: {props.data.error.message}</span>
       )}
       {props.data.loading && <span> Loading...</span>}
-      <span> {system && system.uptimeDelayed} </span>
+      <span> {system && system.uptime} </span>
     </p>
   );
 }
@@ -19,7 +19,7 @@ function Uptime(props) {
 const UptimeQuery = gql`
   query UptimeQuery {
     system {
-      uptimeDelayed
+      uptime
     }
   }
 `;
