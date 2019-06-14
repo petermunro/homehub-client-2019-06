@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Uptime from "./components/Uptime";
 import Hubname from "./components/Hubname";
+import AccessoryList from "./components/AccessoryList";
 
 function App(props) {
   return (
@@ -12,6 +13,7 @@ function App(props) {
       <div className="App">
         <Uptime />
         <Hubname />
+        <AccessoryList />
       </div>
     </div>
   );
