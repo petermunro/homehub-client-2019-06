@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+import Uptime from "./components/Uptime";
 
-function App() {
+function App(props) {
+  let system = props.data.system;
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>HomeHub Server</h1>
       </header>
+      <div className="App">
+        <Uptime />
+        <p>
+          Hubname: <span>{system && system.hubname} </span>
+        </p>
+      </div>
     </div>
   );
 }
 
-export default App;
+const MyQuery = gql`
+  query MyQuery {
+    system {
+      hubname
+      uptime
+    }
+  }
+`;
+
+const MyAppWithData = graphql(MyQuery)(App);
+export default MyAppWithData;
